@@ -1,66 +1,98 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+## Aplikasi-Web-Orix
+##### _Menyediakan layanan sewa kendaraan termasuk mobil angkutan barang dan truk, dengan berbagai pilihan untuk kebutuhan pribadi dan bisnis._
+## 
+[![N|Solid](https://laravel.com/img/logotype.min.svg)]()
+Framework Laravel version 10
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+[![Figma](https://img.shields.io/badge/--F24E1E?logo=figma&logoColor=ffffff)](https://www.figma.com/design/ysErny15fLPBMwO2KzXJZz/Rent-Car?node-id=0-1&t=7RgSd1SvjbpSFRBj-1)
+User Interface
+## Features
 
-## About Laravel
+- Terdapat 2 user (admin dan pihak yang menyetujui)
+- Admin dapat menginputkan pemesanan kendaraan dan menentukan driver serta pihak yang menyetujui pemesanan
+- Pihak yang menyetujui dapat melakukan persetujuan melalui aplikasi
+- Terdapat dashboard yang menampilkan grafik pemakaian kendaraan
+- Terdapat laporan periodik pemesanan kendaraan yang dapat di export (Excel)
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Getting Started
 
-## Learning Laravel
+PHP versi 8.1.
+Assuming you've already installed on your machine: PHP version 8.1, Laravel, Composer.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+install dependencies
+```sh
+composer install
+npm install
+```
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+create .env file and generate the application key
+```sh
+cp .env.example .env
+php artisan key:generate
+```
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+create database
+```sh
+php artisan db
+```
 
-## Laravel Sponsors
+migration and seeder
+```sh
+php artisan migrate --seed
+```
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+Then launch the server:
+```sh
+php artisan serve
+```
+The Laravel sample project is now up and running! Access it at http://localhost:8000.
+## Data User
 
-### Premium Partners
+- username : admin@gmail.com
+	password : 123456
+	level    : admin
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+-	username : users@gmail.com
+	password : 12345678
+	level    : users
 
-## Contributing
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+## Development
+- Sales mencari order , setelah mendapat order sales membuat data customer miliknya sendiri, sehingga setiap customer dan order akan melekat dengan nama salesnya yang berguna untuk melihat kinerja sales.
+- Admin menginput data-data orderan seperti nama inventory yang dirental oleh customer, jumlah inventory yang dirental, tanggal mulai rental, durasi rental, nama dan telp customer.
+- Kemudian sales bisa memberikan approval data orderan.
+- Pada contoh ini setiap customer diberi limit jumlah inventory yang boleh dirental dalam satu order adalah sebanyak 5 unit.
+- Setiap data orderan diberi status untuk membantu admin dan sales dalam memantau inventory yang dirental customer. Secara default ada 2 status yaitu status Open untuk barang yang masih dirental dan status Kembali untuk barang yang sudah dikembalikan oleh customer.
+- Orderan yang telah kembali inventorynya akan diinput ke tabel pengembalian inventory. Pengembalian ini juga diberi status yaitu status Tepat Waktu untuk barang yang dikembalikan tepat waktu oleh customer dan status Terlambat jika ada kelebihan waktu dari durasi yang sudah dicatat saat pembuatan order.
+- Setelah pengemblian inventory oleh customer dan sudah diinputkan ke tabel penerimaan maka bisa dibuatkan Invoice oleh sales atau admin dimana invoice ini sudah lengkap dengan perhitungan jika ada perpanjangan waktu atau keterlambatan rental oleh customer.
+- Invoice yang sudah dibuatkan bisa dicetak atau dibuat ke dalam file PDF.
 
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
 
 ## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+The Laravel framework is open-sourced software licensed under the MIT license.
+
+[//]: # (These are reference links used in the body of this note and get stripped out when the markdown processor does its job. There is no need to format nicely because it shouldn't be seen. Thanks SO - http://stackoverflow.com/questions/4823468/store-comments-in-markdown-syntax)
+
+   [dill]: <https://github.com/joemccann/dillinger>
+   [git-repo-url]: <https://github.com/joemccann/dillinger.git>
+   [john gruber]: <http://daringfireball.net>
+   [df1]: <http://daringfireball.net/projects/markdown/>
+   [markdown-it]: <https://github.com/markdown-it/markdown-it>
+   [Ace Editor]: <http://ace.ajax.org>
+   [node.js]: <http://nodejs.org>
+   [Twitter Bootstrap]: <http://twitter.github.com/bootstrap/>
+   [jQuery]: <http://jquery.com>
+   [@tjholowaychuk]: <http://twitter.com/tjholowaychuk>
+   [express]: <http://expressjs.com>
+   [AngularJS]: <http://angularjs.org>
+   [Gulp]: <http://gulpjs.com>
+
+   [PlDb]: <https://github.com/joemccann/dillinger/tree/master/plugins/dropbox/README.md>
+   [PlGh]: <https://github.com/joemccann/dillinger/tree/master/plugins/github/README.md>
+   [PlGd]: <https://github.com/joemccann/dillinger/tree/master/plugins/googledrive/README.md>
+   [PlOd]: <https://github.com/joemccann/dillinger/tree/master/plugins/onedrive/README.md>
+   [PlMe]: <https://github.com/joemccann/dillinger/tree/master/plugins/medium/README.md>
+   [PlGa]: <https://github.com/RahulHP/dillinger/blob/master/plugins/googleanalytics/README.md>
