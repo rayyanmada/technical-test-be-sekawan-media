@@ -8,7 +8,7 @@ Framework Laravel version 10
 User Interface
 ## Features
 
-- Terdapat 2 user (admin dan pihak yang menyetujui)
+- Terdapat 2 user (admin dan pihak yang menyetujui
 - Admin dapat menginputkan pemesanan kendaraan dan menentukan driver serta pihak yang menyetujui pemesanan
 - Pihak yang menyetujui dapat melakukan persetujuan melalui aplikasi
 - Terdapat dashboard yang menampilkan grafik pemakaian kendaraan
