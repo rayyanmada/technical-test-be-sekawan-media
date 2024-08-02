@@ -1,5 +1,5 @@
-## Aplikasi-Web-Orix
-##### _Menyediakan layanan sewa kendaraan termasuk mobil angkutan barang dan truk, dengan berbagai pilihan untuk kebutuhan pribadi dan bisnis._
+## Aplikasi-Website-e-Rental
+##### _Aplikasi Website e-Rental Menyediakan layanan sewa kendaraan termasuk mobil angkutan barang dan truk, dengan berbagai pilihan untuk kebutuhan pribadi dan bisnis._
 ## 
 [![N|Solid](https://laravel.com/img/logotype.min.svg)]()
 Framework Laravel version 10
